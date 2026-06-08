@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  // Turbopack panics on non-ASCII characters in the project path ("Mío").
+  // Webpack is used as the bundler instead.
+  turbopack: {},
+}
 
-export default nextConfig;
+export default nextConfig
