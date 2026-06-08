@@ -70,7 +70,7 @@ export default function PaymentsTable({ data, paginated = false }: Props) {
             <tr className="border-b border-[#e2e8f0] bg-gray-50">
               <th className="text-left px-4 py-3 font-medium text-gray-500">ID</th>
               <th className="text-left px-4 py-3 font-medium text-gray-500">Name</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-500">Email</th>
+              <th className="hidden sm:table-cell text-left px-4 py-3 font-medium text-gray-500">Email</th>
               <th className="text-left px-4 py-3 font-medium text-gray-500">Course</th>
               <th className="text-right px-4 py-3 font-medium text-gray-500">
                 <button
@@ -109,7 +109,7 @@ export default function PaymentsTable({ data, paginated = false }: Props) {
                   <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                     {p.nombre}
                   </td>
-                  <td className="px-4 py-3 text-gray-500 max-w-[180px] truncate">{p.email}</td>
+                  <td className="hidden sm:table-cell px-4 py-3 text-gray-500 max-w-[180px] truncate">{p.email}</td>
                   <td className="px-4 py-3 text-gray-600 max-w-[160px] truncate">{p.curso}</td>
                   <td className="px-4 py-3 text-right font-mono font-medium text-gray-900 whitespace-nowrap">
                     {formatCurrency(p.importe, p.moneda)}

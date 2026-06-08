@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { Pago, EstadoFilter } from '@/types'
-import Sidebar from '@/components/Sidebar'
+import AppShell from '@/components/AppShell'
 import PaymentsTable from '@/components/PaymentsTable'
 
 function exportCSV(rows: Pago[], filename = 'pagos.csv') {
@@ -66,13 +66,11 @@ export default function PaymentsPage() {
   }, [pagos, search, estadoFilter])
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-
-      <main className="flex-1 min-w-0" style={{ marginLeft: '280px' }}>
+    <AppShell>
+      <main className="flex-1 min-w-0">
         {/* Header */}
         <div
-          className="sticky top-0 z-10 border-b border-[#e2e8f0] px-8 py-4 flex items-center justify-between gap-4 flex-wrap"
+          className="sticky top-14 lg:top-0 z-10 border-b border-[#e2e8f0] px-4 lg:px-8 py-4 flex items-center justify-between gap-4 flex-wrap"
           style={{ backgroundColor: '#F8FAFC' }}
         >
           <div>
@@ -100,7 +98,7 @@ export default function PaymentsPage() {
           </div>
         </div>
 
-        <div className="p-8 space-y-4">
+        <div className="p-4 lg:p-8 space-y-4">
           {/* Error banner */}
           {fetchError && (
             <div className="bg-rose-50 border border-rose-200 rounded-lg px-4 py-3 text-sm text-rose-700">
@@ -153,6 +151,6 @@ export default function PaymentsPage() {
           )}
         </div>
       </main>
-    </div>
+    </AppShell>
   )
 }

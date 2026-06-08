@@ -3,6 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+type Props = {
+  isOpen: boolean
+  onClose: () => void
+}
+
 const navLinks = [
   {
     href: '/',
@@ -39,15 +44,18 @@ const navLinks = [
   },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: Props) {
   const pathname = usePathname()
 
   return (
     <aside
-      className="fixed top-0 left-0 h-full flex flex-col border-r border-[#e2e8f0]"
+      className={`fixed top-0 left-0 h-full z-40 flex flex-col border-r border-[#e2e8f0] transition-transform duration-300 ease-in-out ${
+        isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+      }`}
       style={{ width: '280px', backgroundColor: '#eff4ff' }}
     >
-      <div className="p-6 border-b border-[#e2e8f0]">
+      {/* Header: logo + X button on mobile */}
+      <div className="p-6 border-b border-[#e2e8f0] flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
@@ -60,6 +68,15 @@ export default function Sidebar() {
             <p className="text-xs text-gray-500">Academy</p>
           </div>
         </div>
+        <button
+          onClick={onClose}
+          className="lg:hidden p-1.5 rounded-lg hover:bg-gray-200 text-gray-500"
+          aria-label="Close sidebar"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
       </div>
 
       <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -87,7 +104,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-[#e2e8f0]">
-        <p className="text-xs text-gray-400 text-center">FormaPro Academy © 2026</p>
+        <p className="text-xs text-gray-400 text-center">FormaPro Academy &copy; 2026</p>
       </div>
     </aside>
   )

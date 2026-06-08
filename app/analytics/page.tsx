@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { Pago } from '@/types'
-import Sidebar from '@/components/Sidebar'
+import AppShell from '@/components/AppShell'
 import KpiCard from '@/components/KpiCard'
 import RevenueBarChart from '@/components/RevenueBarChart'
 import StatusDonutChart from '@/components/StatusDonutChart'
@@ -65,20 +65,18 @@ export default function AnalyticsPage() {
   }, [pagos])
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-
-      <main className="flex-1 min-w-0" style={{ marginLeft: '280px' }}>
+    <AppShell>
+      <main className="flex-1 min-w-0">
         {/* Header */}
         <div
-          className="sticky top-0 z-10 border-b border-[#e2e8f0] px-8 py-4"
+          className="sticky top-14 lg:top-0 z-10 border-b border-[#e2e8f0] px-4 lg:px-8 py-4"
           style={{ backgroundColor: '#F8FAFC' }}
         >
           <h1 className="text-xl font-bold text-gray-900">Analytics</h1>
           <p className="text-xs text-gray-500">Revenue and payment trends</p>
         </div>
 
-        <div className="p-8 space-y-6">
+        <div className="p-4 lg:p-8 space-y-6">
           {/* Error banner */}
           {fetchError && (
             <div className="bg-rose-50 border border-rose-200 rounded-lg px-4 py-3 text-sm text-rose-700">
@@ -142,6 +140,6 @@ export default function AnalyticsPage() {
           </div>
         </div>
       </main>
-    </div>
+    </AppShell>
   )
 }

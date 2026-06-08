@@ -8,7 +8,7 @@ type KpiCardProps = {
 
 export default function KpiCard({ title, value, subtitle, badge, icon }: KpiCardProps) {
   return (
-    <div className="bg-white border border-[#e2e8f0] rounded-lg shadow-sm p-6 flex flex-col gap-1">
+    <div className="bg-white border border-[#e2e8f0] rounded-lg shadow-sm p-4 sm:p-6 flex flex-col gap-1 min-w-0">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <p className="text-sm font-medium text-gray-500">{title}</p>
@@ -20,7 +20,7 @@ export default function KpiCard({ title, value, subtitle, badge, icon }: KpiCard
         </div>
         {icon && <span className="text-gray-300">{icon}</span>}
       </div>
-      <p className="text-2xl font-bold text-gray-900 font-mono tracking-tight">{value}</p>
+      <p className="text-lg sm:text-2xl font-bold text-gray-900 font-mono tracking-tight break-all">{value}</p>
       {subtitle && <p className="text-xs text-gray-400">{subtitle}</p>}
     </div>
   )
